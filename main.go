@@ -11,14 +11,15 @@ import (
 
 var (
 	bindAddr = flag.String("bind", "localhost:58001", "Bind address to listen for incoming requests")
+	status   = flag.Int("status", http.StatusOK, "Change the status code to return")
 )
 
 func logToStdoutAndReturn(w http.ResponseWriter, req *http.Request) {
-	w.WriteHeader(http.StatusOK)
+	w.WriteHeader(*status)
 	buf := bytes.Buffer{}
 	buf.WriteString("\n----- GITHUB ACTION REQUEST -----\n")
 	req.WriteProxy(&buf)
-	buf.WriteString("----- END GITHUB ACTION REQUEST -----\n")
+	buf.WriteString("\n----- END GITHUB ACTION REQUEST -----\n")
 	io.Copy(os.Stdout, &buf)
 }
 
