@@ -9,6 +9,6 @@ jobs:
 
     steps:
     - name: Call-A-Webhook
-      uses: .github/actions/call-webhook
+      uses: ./.github/actions/call-webhook
       env:
         WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
