@@ -8,8 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Webhook
-      uses: joelwmale/webhook-action@749e2dcbc6735ce0c36e1dbbb660618cd7b5f91c
+    - name: Call-A-Webhook
+      uses: .github/actions/call-webhook
       env:
         WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
-        data: "Hello from github actions!"
